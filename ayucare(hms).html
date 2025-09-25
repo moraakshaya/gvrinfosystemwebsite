@@ -403,41 +403,175 @@
     @keyframes float { 0%,100%{transform:translateY(0);}50%{transform:translateY(-20px);} }
   </style>
 
+  
 
-  <!-- Floating Decorations -->
-  <div class="floating w-40 h-40 bg-yellow-400 left-10 top-32"></div>
-  <div class="floating w-32 h-32 bg-yellow-400 right-10 top-72"></div>
+<!-- Ayucare Home Banner Section -->
+<section id="ayucarehomebanner-section" class="relative w-full bg-black/10 pt-[10%] pb-5 md:pt-[5%] overflow-hidden">
+  <div class="absolute inset-0 bg-black/10"></div>
+  <div class="relative z-10 max-w-6xl mx-auto px-6 pt-16 text-center">
 
-  <!-- Hero Section -->
-  <header class="relative bg-gradient-to-b from-gray-950 to-gray-900 py-28 px-6 text-center overflow-hidden">
-    <img src="https://images.unsplash.com/photo-1588776814546-ec7aa98a8b92?w=1600&q=80" alt="" class="absolute inset-0 w-full h-full object-cover opacity-20">
-    <div class="relative z-10">
-      <h1 class="text-3xl md:text-4xl font-extrabold text-yellow-400 mb-6 typing">AyucareHMS</h1>
-      <p class="text-gray-400 text-xl max-w-3xl mx-auto fade-up">Complete Hospital Management System for efficient, secure, and streamlined healthcare operations</p>
-    </div>
-  </header>
+    <p id="ayucarehomebanner-subtitle" class="italic text-white text-md md:text-lg mb-1 opacity-0 translate-y-10">
+      Product Details <span class="text-yellow-400">🌿</span>
+    </p>
+    <h2 id="ayucarehomebanner-title"
+      class="text-2xl md:text-4xl font-bold text-yellow-400 md:mb-6 opacity-0 translate-y-10">
+      Hospital Management System (AYUCARE)
+    </h2>
+    <a href="https://your-website-link.com" target="_blank"
+      class="inline-flex items-center gap-2 text-white font-medium transition duration-300 hover:text-green-400 opacity-0 translate-y-10"
+      id="ayucarehomebanner-link">
+      <i class="fa-solid fa-hand-point-right text-white text-xl animate-ayucarePulseSlow"></i>
+      Visit Website
+    </a>
+  </div>
+</section>
 
-  <!-- Features Section with Icons -->
-  <section class="max-w-7xl mx-auto px-6 py-20">
-    <h2 class="text-4xl font-bold text-yellow-400 text-center fade-up mb-12">Core Features</h2>
+<style>
+  @keyframes ayucareSlideUp {
+    0% {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-ayucareSlideUp {
+    animation: ayucareSlideUp 0.8s ease-out forwards;
+  }
+
+  @keyframes ayucarePulseSlow {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+  }
+
+  .animate-ayucarePulseSlow {
+    animation: ayucarePulseSlow 1.5s infinite;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const ayucareSubtitle = document.getElementById("ayucarehomebanner-subtitle");
+    const ayucareTitle = document.getElementById("ayucarehomebanner-title");
+    const ayucareLink = document.getElementById("ayucarehomebanner-link");
+    const ayucareSection = document.getElementById("ayucarehomebanner-section");
+
+    const ayucareObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            [ayucareSubtitle, ayucareTitle, ayucareLink].forEach(el => {
+              el.classList.remove("animate-ayucareSlideUp");
+              void el.offsetWidth;
+            });
+
+            ayucareSubtitle.classList.add("animate-ayucareSlideUp");
+            setTimeout(() => {
+              ayucareTitle.classList.add("animate-ayucareSlideUp");
+            }, 500);
+            setTimeout(() => {
+              ayucareLink.classList.add("animate-ayucareSlideUp");
+            }, 1000);
+
+          } else {
+            ayucareSubtitle.classList.remove("animate-ayucareSlideUp");
+            ayucareTitle.classList.remove("animate-ayucareSlideUp");
+            ayucareLink.classList.remove("animate-ayucareSlideUp");
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    ayucareObserver.observe(ayucareSection);
+  });
+</script>
+
+ <!-- Features Section with Dark Overlay -->
+<section id="featuressection-wrapper" class="relative w-full bg-black/10 py-20 overflow-hidden">
+  <div class="absolute inset-0 bg-black/10"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+
+    <h2 id="featuressection-title" class="text-4xl font-bold text-yellow-400 text-center opacity-0 translate-y-10 mb-12">
+      Core Features
+    </h2>
+
     <div class="grid md:grid-cols-3 gap-12">
-      <div class="fade-up bg-gray-800 p-8 rounded-2xl shadow-lg hover:scale-105 transition-transform">
+      <div id="featuressection-item1" class="bg-gray-800 p-8 rounded-2xl shadow-lg hover:scale-105 transition-transform opacity-0 translate-y-10">
         <div class="text-yellow-400 mb-4 text-4xl"><i class="fas fa-user-injured"></i></div>
         <h3 class="text-xl font-semibold mb-2">Patient Management</h3>
         <p class="text-gray-300">Track patient records, appointments, and treatment plans seamlessly.</p>
       </div>
-      <div class="slide-left bg-gray-800 p-8 rounded-2xl shadow-lg hover:scale-105 transition-transform">
+      <div id="featuressection-item2" class="bg-gray-800 p-8 rounded-2xl shadow-lg hover:scale-105 transition-transform opacity-0 translate-y-10">
         <div class="text-yellow-400 mb-4 text-4xl"><i class="fas fa-calendar-check"></i></div>
         <h3 class="text-xl font-semibold mb-2">Appointment Scheduling</h3>
         <p class="text-gray-300">Automated scheduling with reminders for doctors and patients.</p>
       </div>
-      <div class="slide-right bg-gray-800 p-8 rounded-2xl shadow-lg hover:scale-105 transition-transform">
+      <div id="featuressection-item3" class="bg-gray-800 p-8 rounded-2xl shadow-lg hover:scale-105 transition-transform opacity-0 translate-y-10">
         <div class="text-yellow-400 mb-4 text-4xl"><i class="fas fa-file-invoice-dollar"></i></div>
         <h3 class="text-xl font-semibold mb-2">Billing & Payments</h3>
         <p class="text-gray-300">Generate invoices, manage payments, and handle insurance claims efficiently.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<style>
+  @keyframes featuressectionSlideUp {
+    0% {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-featuressectionSlideUp {
+    animation: featuressectionSlideUp 0.8s ease-out forwards;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const featuressectionTitle = document.getElementById("featuressection-title");
+    const featuressectionItem1 = document.getElementById("featuressection-item1");
+    const featuressectionItem2 = document.getElementById("featuressection-item2");
+    const featuressectionItem3 = document.getElementById("featuressection-item3");
+    const featuressectionWrapper = document.getElementById("featuressection-wrapper");
+
+    const featuressectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            [featuressectionTitle, featuressectionItem1, featuressectionItem2, featuressectionItem3].forEach((el, i) => {
+              el.classList.remove("animate-featuressectionSlideUp");
+              void el.offsetWidth; 
+              setTimeout(() => {
+                el.classList.add("animate-featuressectionSlideUp");
+              }, i * 400); 
+            });
+          } else {
+            [featuressectionTitle, featuressectionItem1, featuressectionItem2, featuressectionItem3].forEach((el) => {
+              el.classList.remove("animate-featuressectionSlideUp");
+            });
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    featuressectionObserver.observe(featuressectionWrapper);
+  });
+</script>
 
   <!-- Image + Content Section with Diagonal Background -->
   <section class="relative bg-gradient-to-tr from-gray-800 to-gray-900 py-20 overflow-hidden">
@@ -458,24 +592,91 @@
     </div>
   </section>
 
-  <!-- Request Demo Section -->
-  <section class="py-20 px-6 bg-gray-900">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
-      <div class="fade-up bg-gray-800 p-10 rounded-2xl shadow-lg">
-        <h2 class="text-3xl font-bold text-yellow-400 mb-6">Request a Demo</h2>
-        <form class="space-y-4">
-          <input type="text" placeholder="Your Name" class="w-full p-3 rounded-lg bg-gray-700 text-gray-200 border border-gray-600 focus:outline-none focus:border-yellow-400">
-          <input type="email" placeholder="Email" class="w-full p-3 rounded-lg bg-gray-700 text-gray-200 border border-gray-600 focus:outline-none focus:border-yellow-400">
-          <input type="text" placeholder="Hospital Name" class="w-full p-3 rounded-lg bg-gray-700 text-gray-200 border border-gray-600 focus:outline-none focus:border-yellow-400">
-          <textarea placeholder="Message" class="w-full p-3 rounded-lg bg-gray-700 text-gray-200 border border-gray-600 focus:outline-none focus:border-yellow-400"></textarea>
-          <button type="submit" class="bg-yellow-400 text-gray-900 font-semibold px-6 py-3 rounded-lg hover:bg-yellow-500 transition-all">Submit</button>
-        </form>
-      </div>
-      <div class="slide-right flex justify-center">
-        <img src="./assests/medical-banner-with-stethoscope.jpg" alt="Hospital Team" class="rounded-xl shadow-lg">
-      </div>
+<!-- Request Demo Section -->
+<section id="requestdemo-section" class="relative w-full bg-black/10 py-20 px-6 overflow-hidden">
+  <!-- Dark Overlay -->
+  <div class="absolute inset-0 bg-black/10"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    
+    <!-- Left: Form -->
+    <div id="requestdemo-form" class="opacity-0 translate-y-10 bg-gray-800 p-10 rounded-2xl shadow-lg">
+      <h2 class="text-3xl font-bold text-yellow-400 mb-6">Request a Demo</h2>
+      <form class="space-y-4">
+        <input type="text" placeholder="Your Name"
+          class="w-full p-3 rounded-lg bg-gray-700 text-gray-200 border border-gray-600 focus:outline-none focus:border-yellow-400">
+        <input type="email" placeholder="Email"
+          class="w-full p-3 rounded-lg bg-gray-700 text-gray-200 border border-gray-600 focus:outline-none focus:border-yellow-400">
+        <input type="text" placeholder="Hospital Name"
+          class="w-full p-3 rounded-lg bg-gray-700 text-gray-200 border border-gray-600 focus:outline-none focus:border-yellow-400">
+        <textarea placeholder="Message"
+          class="w-full p-3 rounded-lg bg-gray-700 text-gray-200 border border-gray-600 focus:outline-none focus:border-yellow-400"></textarea>
+        <button type="submit"
+          class="bg-yellow-400 text-gray-900 font-semibold px-6 py-3 rounded-lg hover:bg-yellow-500 transition-all">Submit</button>
+      </form>
     </div>
-  </section>
+
+    <!-- Right: Image -->
+    <div id="requestdemo-image" class="opacity-0 translate-y-10 flex justify-center">
+      <img src="./assests/medical-banner-with-stethoscope.jpg" alt="Hospital Team"
+        class="rounded-xl shadow-lg">
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Request Demo Animations */
+  @keyframes requestdemoSlideUp {
+    0% {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-requestdemoSlideUp {
+    animation: requestdemoSlideUp 0.8s ease-out forwards;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const requestdemoForm = document.getElementById("requestdemo-form");
+    const requestdemoImage = document.getElementById("requestdemo-image");
+    const requestdemoSection = document.getElementById("requestdemo-section");
+
+    const requestdemoObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            [requestdemoForm, requestdemoImage].forEach(el => {
+              el.classList.remove("animate-requestdemoSlideUp");
+              void el.offsetWidth;
+            });
+
+            requestdemoForm.classList.add("animate-requestdemoSlideUp");
+            setTimeout(() => {
+              requestdemoImage.classList.add("animate-requestdemoSlideUp");
+            }, 500);
+
+          } else {
+            requestdemoForm.classList.remove("animate-requestdemoSlideUp");
+            requestdemoImage.classList.remove("animate-requestdemoSlideUp");
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    requestdemoObserver.observe(requestdemoSection);
+  });
+</script>
+
 
   <!-- Scroll Reveal JS -->
   <script>
@@ -491,10 +692,6 @@
       scrollItems.forEach(item => observer.observe(item));
     });
   </script>
-
-
-
-
 
     <footer class="relative bg-gray-900 text-gray-300 pt-10 overflow-hidden">
         <div class="absolute inset-0 bg-gray-800/70 pointer-events-none"></div>
