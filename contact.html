@@ -384,7 +384,6 @@
     </style>
 
     <style>
-    /* Scroll animations */
     .fade-up, .slide-left, .slide-right {
       opacity: 0;
       transform: translateY(40px);
@@ -395,70 +394,226 @@
     .show { opacity: 1; transform: translate(0,0); }
   </style>
 
-      <!-- Hero Section -->
-  <header class="relative bg-gray-950 py-24 px-6 text-center overflow-hidden">
-    <img src="https://images.unsplash.com/photo-1581090700227-0a31b21f7875?w=1600&q=80" alt="Teamwork" class="absolute inset-0 w-full h-full object-cover opacity-20">
-    <div class="relative z-10">
-      <h1 class="text-5xl md:text-6xl font-extrabold text-yellow-400 mb-6">Contact Us</h1>
-      <p class="text-gray-400 text-xl max-w-3xl mx-auto">We'd love to hear from you. Reach out to us for any inquiries or support.</p>
+  
+<!-- CONTACT HOME BANNER SECTION -->
+<section id="contact-banner-section" class="relative w-full bg-black/10 pt-[10%] pb-5 md:pt-[5%] overflow-hidden">
+    <div class="absolute inset-0 bg-black/10"></div>
+    <div class="relative z-10 max-w-6xl mx-auto px-6 pt-16 text-center">
+        <p id="contact-subtitle" class="italic text-white text-md md:text-lg mb-1 opacity-0 translate-y-10">
+            Get in Touch <span class="text-yellow-400">📩</span>
+        </p>
+        <h2 id="contact-title"
+            class="text-3xl md:text-4xl font-bold text-yellow-400 md:mb-10 opacity-0 translate-y-10">
+            Contact Our Team
+        </h2>
     </div>
-  </header>
+</section>
+<style>
+    @keyframes contactSlideUp {
+        0% {
+            transform: translateY(30px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
 
-  <!-- Contact Information Section -->
-  <section class="max-w-7xl mx-auto px-6 py-16 text-center">
-    <h2 class="text-3xl font-bold text-yellow-400 fade-up">Get in Touch</h2>
-    <p class="text-gray-400 fade-up mb-8">Our team is here to assist you with any questions or support you need.</p>
+    .animate-contactSlideUp {
+        animation: contactSlideUp 0.8s ease-out forwards;
+    }
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const contactSubtitle = document.getElementById("contact-subtitle");
+        const contactTitle = document.getElementById("contact-title");
+        const contactSection = document.getElementById("contact-banner-section");
+
+        const contactObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        contactSubtitle.classList.remove("animate-contactSlideUp");
+                        contactTitle.classList.remove("animate-contactSlideUp");
+                        void contactSubtitle.offsetWidth;
+                        void contactTitle.offsetWidth;
+
+                        contactSubtitle.classList.add("animate-contactSlideUp");
+                        setTimeout(() => {
+                            contactTitle.classList.add("animate-contactSlideUp");
+                        }, 500);
+                    } else {
+                        contactSubtitle.classList.remove("animate-contactSlideUp");
+                        contactTitle.classList.remove("animate-contactSlideUp");
+                    }
+                });
+            },
+            { threshold: 0.3 }
+        );
+
+        contactObserver.observe(contactSection);
+    });
+</script>
+
+
+<!-- CONTACT INFORMATION SECTION -->
+<section id="contactinfo-section" class="relative w-full bg-black/10 py-5 md:py-10 overflow-hidden">
+  <div class="absolute inset-0 bg-black/10 pointer-events-none"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
+    <h2 class="text-2xl md:text-4xl font-bold text-white contactinfo-fade-up">Contact Us</h2>
+    <p class="text-gray-400 text-md md:text-lg contactinfo-fade-up mb-8">
+     We'd love to hear from you. Reach out to us for any inquiries or support.
+    </p>
+
     <div class="grid md:grid-cols-3 gap-6">
-      <div class="fade-up bg-gray-800 rounded-xl p-6 shadow hover:scale-105 transition-transform">
+      <div class="contactinfo-fade-up bg-gray-800 rounded-xl p-6 shadow hover:scale-105 transition-transform">
         <h3 class="text-xl text-yellow-400 font-bold">Email Us</h3>
-        <p class="text-gray-300 mt-2">Send us an email at <a href="mailto:info@gvrinfosystems.com" class="text-yellow-400">info@gvrinfosystems.com</a></p>
+        <p class="text-gray-300 mt-2">
+          Send us an email at
+          <a href="mailto:info@gvrinfosystems.com" class="text-yellow-400">info@gvrinfosystems.com</a>
+        </p>
       </div>
-      <div class="slide-left bg-gray-800 rounded-xl p-6 shadow hover:scale-105 transition-transform">
+
+      <div class="contactinfo-slide-left bg-gray-800 rounded-xl p-6 shadow hover:scale-105 transition-transform">
         <h3 class="text-xl text-yellow-400 font-bold">Call Us</h3>
         <p class="text-gray-300 mt-2">Reach us at +91 6300279339</p>
       </div>
-      <div class="slide-right bg-gray-800 rounded-xl p-6 shadow hover:scale-105 transition-transform">
+
+      <div class="contactinfo-slide-right bg-gray-800 rounded-xl p-6 shadow hover:scale-105 transition-transform">
         <h3 class="text-xl text-yellow-400 font-bold">Visit Us</h3>
-        <p class="text-gray-300 mt-2">Plot No. 3, 3rd Floor, Sri Sai Enclave, Old Bowenpally, HYDERABAD, INDIA</p>
+        <p class="text-gray-300 mt-2">
+          Plot No. 3, 3rd Floor, Sri Sai Enclave, Old Bowenpally, HYDERABAD, INDIA
+        </p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+<style>
+  .contactinfo-fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.9s ease;
+  }
 
-  <!-- Contact Form Section -->
-  <section class="bg-gray-800 py-16">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold text-yellow-400 fade-up">Send Us a Message</h2>
-      <p class="text-gray-400 fade-up mb-8">Fill out the form below, and we'll get back to you as soon as possible.</p>
-      <form class="space-y-4 fade-up bg-gray-700 p-8 rounded-2xl shadow-lg max-w-lg mx-auto">
-        <input type="text" placeholder="Your Name" class="w-full p-3 rounded-lg bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:border-yellow-400">
-        <input type="email" placeholder="Your Email" class="w-full p-3 rounded-lg bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:border-yellow-400">
-        <textarea placeholder="Your Message" class="w-full p-3 rounded-lg bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:border-yellow-400"></textarea>
-        <button type="submit" class="bg-yellow-400 text-gray-900 font-semibold px-6 py-3 rounded-lg hover:bg-yellow-500 transition-all">Send Message</button>
-      </form>
-    </div>
-  </section>
+  .contactinfo-slide-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.9s ease;
+  }
 
-    <!-- Scroll Reveal JS -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const scrollItems = document.querySelectorAll('.fade-up, .slide-left, .slide-right');
+  .contactinfo-slide-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.9s ease;
+  }
 
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach((entry, index) => {
-          if(entry.isIntersecting){
-            setTimeout(() => {
-              entry.target.classList.add('show');
-            }, index * 100);
+  .contactinfo-visible {
+    opacity: 1 !important;
+    transform: translateX(0) translateY(0) !important;
+  }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const contactinfoObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const children = entry.target.querySelectorAll(
+            ".contactinfo-fade-up, .contactinfo-slide-left, .contactinfo-slide-right"
+          );
+
+          if (entry.isIntersecting) {
+            children.forEach((el, i) => {
+              setTimeout(() => {
+                el.classList.add("contactinfo-visible");
+              }, i * 200);
+            });
+          } else {
+            children.forEach((el) => {
+              el.classList.remove("contactinfo-visible");
+            });
           }
         });
-      }, { threshold: 0.2 });
+      },
+      { threshold: 0.3 }
+    );
 
-      scrollItems.forEach(item => observer.observe(item));
-    });
-  </script>
+    contactinfoObserver.observe(document.querySelector("#contactinfo-section"));
+  });
+</script>
 
 
+  <!-- CONTACT FORM SECTION -->
+<section id="contactform-section" class="relative w-full bg-black/10 pb-5 overflow-hidden">
+  <div class="absolute inset-0 bg-black/10 pointer-events-none"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
+    <h2 class="text-2xl md:text-3xl font-bold text-whitecontactform-fade-up mb-2">Send Us a Message</h2>
+    <p class="text-gray-400 contactform-fade-up mb-2 md:mb-6">
+      Fill out the form below, and we'll get back to you as soon as possible.
+    </p>
 
+    <form class="space-y-4 contactform-fade-up bg-gray-700 p-8 rounded-2xl shadow-lg max-w-lg mx-auto">
+      <input 
+        type="text" 
+        placeholder="Your Name" 
+        class="w-full p-3 rounded-lg bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:border-yellow-400"
+      >
+      <input 
+        type="email" 
+        placeholder="Your Email" 
+        class="w-full p-3 rounded-lg bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:border-yellow-400"
+      >
+      <textarea 
+        placeholder="Your Message" 
+        class="w-full p-3 rounded-lg bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:border-yellow-400"
+      ></textarea>
+      <button 
+        type="submit" 
+        class="bg-yellow-400 text-gray-900 font-semibold px-3 py-1 md:px-6 md:py-3 rounded-lg hover:bg-yellow-500 transition-all"
+      >
+        Send Message
+      </button>
+    </form>
+  </div>
+</section>
+<style>
+  .contactform-fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.9s ease;
+  }
+
+  .contactform-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const contactformObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const children = entry.target.querySelectorAll(".contactform-fade-up");
+
+          if (entry.isIntersecting) {
+            children.forEach((el, i) => {
+              setTimeout(() => {
+                el.classList.add("contactform-visible");
+              }, i * 200);
+            });
+          } else {
+            children.forEach((el) => {
+              el.classList.remove("contactform-visible");
+            });
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    contactformObserver.observe(document.querySelector("#contactform-section"));
+  });
+</script>
 
 
     <footer class="relative bg-gray-900 text-gray-300 pt-10 overflow-hidden">
